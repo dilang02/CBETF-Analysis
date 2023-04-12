@@ -1,6 +1,6 @@
 rm(list=ls()) # Clear RStudio and receive user input
 graphics.off()
-product_list <- c("CORN","WEAT","SOYB","CANE","SPY")
+product_list <- c("CORN","WEAT","SOYB","CANE","SPY","AAAU")
 ticker <- readline("Enter the ticker symbol of the commodity-backed ETF:")
 sample_data <- read.csv(paste0("~/Thesis/",ticker,".csv"))
 returns <- c() # Establish variables
@@ -30,12 +30,13 @@ for (i in 6:8){ # Show forecasts for price, volume, and returns
   
   plot(HoltWinters(sample_data_ts,gamma=FALSE),main=paste("Holt-Winters Fit:",colnames(sample_data[i]))) # HW Plot
   
+  library(forecast)
   fit <- ets(sample_data_ts) # Create optimized ETS model
   print(colnames(sample_data[i]))
   show(summary(fit))
   acf(residuals(fit)) # Ensure normality of residuals and autocorrelation
   show(Box.test(residuals(fit),type="Ljung-Box"))
-  plot(forecast(fit,h=365),main=paste("ETS Model:",colnames(sample_data[i])),xlab="Time") # Plot ETS model
+  plot(forecast(fit,h=30),main=paste("ETS Model:",colnames(sample_data[i])),xlab="Time") # Plot ETS model
   
   arima <- auto.arima(sample_data_ts,ic="aic") # Determine optimized ARIMA model parameters and report
   show(arima)
