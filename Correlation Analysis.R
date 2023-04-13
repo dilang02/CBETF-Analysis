@@ -1,8 +1,8 @@
 rm(list=ls()) # Clear RStudio and receive user input
 graphics.off()
 returns <- c() # Establish variables
-product_list <- c("CORN","WEAT","SOYB","CANE","SPY","AAAU","SLV","CPER","COW") # Adjustable list of commodity-backed ETFs
-
+product_list <- c("CORN","WEAT","SOYB","CANE","SPY","AAAU","SLV","CPER","COW","BAL","NIB","JO","UNG","UCO","PALL","PPLT","JJN","JJT","JJU","LD") # Adjustable list of commodity-backed ETFs
+show(paste("Number of commodity-backed ETFs:",length(product_list)))
 
 for (i in 1:length(product_list)){ # Create databases for each product
   assign(paste0(product_list[i],"_data"), read.csv(paste0("~/Thesis/",product_list[i],".csv")))
@@ -64,7 +64,16 @@ colnames(volume_matrix) <- product_list
 
 price_cormatrix <- cor(price_matrix) # Determine correlation matrix for all products with respect to price and volume
 vol_cormatrix <- cor(volume_matrix)
+ret_cormatrix <- cor(returns_matrix)
 print("PRICE CORRELATION MATRIX:")
 show(price_cormatrix)
 print("VOLUME CORRELATION MATRIX:")
 show(vol_cormatrix)
+print("RETURNS CORRELATION MATRIX:")
+show(ret_cormatrix)
+
+library(xlsx)
+dataset.names <- list("Adj. Closing Price" = as.data.frame(price_cormatrix),"Trading Volume" = as.data.frame(vol_cormatrix),"Daily Returns" = as.data.frame(ret_cormatrix))
+write.xlsx(as.data.frame(price_cormatrix),"Correlation Matrices.xlsx",sheetName="Adj. Closing Price",row.names=TRUE)
+write.xlsx(as.data.frame(vol_cormatrix),"Correlation Matrices.xlsx",sheetName="Trading Volume",append=TRUE,row.names=TRUE)
+write.xlsx(as.data.frame(ret_cormatrix),"Correlation Matrices.xlsx",sheetName="Daily Returns",append=TRUE,row.names=TRUE)
