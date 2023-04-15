@@ -31,10 +31,10 @@ colnames(returns_matrix) <- product_list
 # Report profitability/risk metrics
 year1 <- returns_matrix[1:252,]
 year2 <- returns_matrix[253:503,] 
-year1_returns <- colMeans(year1)
-year1_risk <- apply(year1,2,sd)
-year2_returns <- colMeans(year2)
-year2_risk <- apply(year2,2,sd)
+year1_returns <- colMeans(year1)*sqrt(252)
+year1_risk <- apply(year1,2,sd)*sqrt(252)
+year2_returns <- colMeans(year2)*sqrt(252)
+year2_risk <- apply(year2,2,sd)*sqrt(252)
 sharpe <- rbind(year1_returns,year1_risk,year2_returns,year2_risk)
 show(sharpe)
 plot(year1_risk,year1_returns, col="red",main="Year 1: Products by Risk/Returns") # Visualize risk/returns
@@ -77,3 +77,4 @@ dataset.names <- list("Adj. Closing Price" = as.data.frame(price_cormatrix),"Tra
 write.xlsx(as.data.frame(price_cormatrix),"Correlation Matrices.xlsx",sheetName="Adj. Closing Price",row.names=TRUE)
 write.xlsx(as.data.frame(vol_cormatrix),"Correlation Matrices.xlsx",sheetName="Trading Volume",append=TRUE,row.names=TRUE)
 write.xlsx(as.data.frame(ret_cormatrix),"Correlation Matrices.xlsx",sheetName="Daily Returns",append=TRUE,row.names=TRUE)
+write.xlsx(as.data.frame(t(sharpe)),"Risk-Return.xlsx",row.names=TRUE)
