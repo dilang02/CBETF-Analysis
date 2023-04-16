@@ -22,7 +22,7 @@ Because of the liqudity advantage that ETFs and ETNs provide to investors, the p
 17. *JJN* - Barclays iPath Bloomberg **Nickel** Subindex Total Return ETN
 18. *JJT* - Barclays iPath Bloomberg **Tin** Subindex Total Return ETN
 19. *JJU* - Barclays iPath Bloomberg **Aluminum** Subindex Total Return ETN
-20. *LD* - Barclays iPath Bloomberg **LEAD** Subindex Total Return ETN
+20. *LD* - Barclays iPath Bloomberg **Lead** Subindex Total Return ETN
 
 #### Forecasting using Holt-Winters and ARIMA Modeling
 
