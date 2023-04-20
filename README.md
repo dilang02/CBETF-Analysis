@@ -25,10 +25,20 @@ Because of the liqudity advantage that ETFs and ETNs provide to investors, the p
 20. *LD* - Barclays iPath Bloomberg **Lead** Subindex Total Return ETN
 
 #### Forecasting using Holt-Winters and ARIMA Modeling
-
+The code in *Forecasting Analysis.R* is designed to conduct an optimized Holt-Winters, ETS, and ARIMA forecast on the adjusted closing price, trading volume, and daily returns of one of the above 20 commodity-backed ETFs. Please follow the directions below:
+1. Ensure all datasets in *ETF DATA.zip* have been downloaded and are set into the correct working directory
+2. Input the ticker symbol of the product to view graphical representations of a linear trend model, Holt-Winters forecast, optimized ETS forecast (and corresponding residuals fit chart), and optimized ARIMA forecast. Additionally, the annualized return and risk for the product is listed for both years, along with the corresponding parameters for each forecast conducted above.
 #### Searching for Correlations amongst Commodity-Backed ETF/ETNs
-
+The code in *Correlation Analysis.R* is designed to aggregate the data of all twenty commodity-backed ETF/ETNs and compare their respective annualized return and risk while also providing a user-friendly graphic that illustrates this comparison. This is furthered with a formatted correlation matrix that highlights relationships between products. Please follow the directions below:
+1. Ensure all datasets in *ETF DATA.zip* have been downloaded and are set into the correct working directory
+2. Run the code to view a graphical matrix-like representation of each product's risk/return as compared to the others for both years. Additionally, the correlation matrices for adjusted closing price, trading volume, and daily returns will be displayed and exported into a Excel spreadsheet for reference.
 #### Classification Neural Network for Predictive Analysis
-
+The code in *Neural Network.R* is designed to classify each of the twenty products tests into a broad category (ex. Agriculture) and a specific category (ex. Grain) for the purpose of predicting future risks and returns of other products utilizing a black-box model. Please follow the directions below:
+1. Ensure all datasets in *ETF DATA.zip* have been downloaded and are set into the correct working directory
+2. Run the code to create and view one neural network that broadly classifies the risks/returns of each product into a category and another that includes more specific categories [NOTE: In order to maximize the accuracy of the neural networks, the code may have to be ran multiple times]. Additionally, the confusion matrices for both networks will be displayed for reference.
 #### LASSO Regression Modeling of Returns
+The code in *LASSO Regression.R* is designed to create optimal multi-linear regression models for each of the twenty products' daily returns for the purpose of highlighting significant relationships between products utilizing machine learning techniques. Please follow the directions below:
+1. Ensure all datasets in *ETF DATA.zip* have been downloaded and are set into the correct working directory
+2. Run the code to view all significant LASSO models for each product's returns as a function of the returns of the remaining products along with a graphical representation of the lambda optimization process for each product. If the model has an R^2 value of below 50%, it will be reported as insignifcant accordingly. If it is significant, the corresponding parameter(s) will be displayed for reference.
 
+All of the aforementioned analyses are reserved for private and referntial use until the official publication of Dilan Gangopadhyay's thesis on commodity-backed ETPs.
