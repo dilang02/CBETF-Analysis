@@ -41,4 +41,4 @@ The code in *LASSO Regression.R* is designed to create optimal multi-linear regr
 1. Ensure all datasets in *ETF DATA.zip* have been downloaded and are set into the correct working directory
 2. Run the code to view all significant LASSO models for each product's returns as a function of the returns of the remaining products along with a graphical representation of the lambda optimization process for each product. If the model has an R^2 value of below 50%, it will be reported as insignifcant accordingly. If it is significant, the corresponding parameter(s) will be displayed for reference.
 
-All of the aforementioned analyses are reserved for private and referntial use until the official publication of Dilan Gangopadhyay's thesis on commodity-backed ETPs.
+All of the aforementioned analyses are reserved for private and referential use until the official publication of Dilan Gangopadhyay's thesis on commodity-backed ETPs.
