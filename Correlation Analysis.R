@@ -78,3 +78,8 @@ write.xlsx(as.data.frame(price_cormatrix),"Correlation Matrices.xlsx",sheetName=
 write.xlsx(as.data.frame(vol_cormatrix),"Correlation Matrices.xlsx",sheetName="Trading Volume",append=TRUE,row.names=TRUE)
 write.xlsx(as.data.frame(ret_cormatrix),"Correlation Matrices.xlsx",sheetName="Daily Returns",append=TRUE,row.names=TRUE)
 write.xlsx(as.data.frame(t(sharpe)),"Risk-Return.xlsx",row.names=TRUE)
+
+# RESULTS
+library(ggplot2)
+show(ggplot(data=as.data.frame(t(sharpe)),aes(x=year1_risk,y=year1_returns)) + geom_point() + geom_vline(xintercept=mean(year1_risk)) + geom_hline(yintercept=mean(year1_returns)) + geom_text(label=colnames(sharpe),nudge_x=1,nudge_y = 0.25,check_overlap = TRUE) + ggtitle("Year 1: Products by Risk/Returns"))
+show(ggplot(data=as.data.frame(t(sharpe)),aes(x=year2_risk,y=year2_returns)) + geom_point() + geom_vline(xintercept=mean(year2_risk)) + geom_hline(yintercept=mean(year2_returns)) + geom_text(label=colnames(sharpe),nudge_x=1,nudge_y = 0.25,check_overlap = TRUE) + ggtitle("Year 2: Products by Risk/Returns"))

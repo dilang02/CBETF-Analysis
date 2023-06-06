@@ -6,6 +6,7 @@ show(paste("Number of commodity-backed ETFs:",length(product_list)))
 
 library(tidyverse) # Import risk-return data from previous analyses
 library(neuralnet)
+library(xlsx)
 nn_data <- read.xlsx("~/Thesis/Risk-Return.xlsx",sheetName="Categories")
 options(mySeed=7410)
 
@@ -50,3 +51,7 @@ check = as.numeric(factor(nn_data$Category2)) == max.col(pred)
 accuracy = (sum(check)/nrow(nn_data))*100
 show(paste0(accuracy,"% accurate"))
 show(confusion2)
+
+library(xlsx)
+write.xlsx(as.data.frame(confusion),"Neural Network.xlsx",sheetName="Broad Categorization")
+write.xlsx(as.data.frame(confusion2),"Neural Network.xlsx",sheetName="Specific Categorization",append = TRUE)
